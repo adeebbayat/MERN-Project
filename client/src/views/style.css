@@ -90,3 +90,15 @@
     gap:30px;
     margin-bottom: 20px;
 }
+
+.ownerRequestContainer{
+    display: flex;
+    gap:30px;
+    justify-content: center;
+}
+.approveOrDeny{
+    margin-bottom:11px;
+}
+.approve{
+    margin-right: 10px;
+}

@@ -51,11 +51,18 @@ const RenterHome = (props) => {
                 
             })
             .catch((err) => console.log(err));
-        }, [renter]);
+        }, [renter,filteredPhotosURLFinal,id]);
         
     
 
+    const removeRequest = (i) =>{
+        axios.delete(`http://localhost:8000/api/requests/${filteredRequest[i]._id}`)
+        .then((res)=> console.log(res))
+        .catch((err) => console.log(err))
+        console.log(filteredRequest[i]._id)
+        setFilteredPhotosURLFinal(filteredPhotosURLFinal.splice(i,1))
 
+    }
 
         
         
@@ -90,13 +97,13 @@ const RenterHome = (props) => {
             {filteredRequest.map((filteredRequest, i) => (
                 <div key={i} className="requestItem">
                     <div className="imageContainer">
-                        <img src={filterLoaded && `${filteredPhotosURLFinal[i]}`} width={200} alt={`Image ${i}`} />
+                        <img src={filterLoaded && `${filteredPhotosURLFinal[i]}`} width={200} alt={`i`} />
                     </div>
                     <div className="status">
                         <h4>Status: {filteredRequest.request_status}</h4>
                     </div>
                     <div className="cancelButton">
-                        <button>Cancel Request</button>
+                        <button onClick = {() => removeRequest(i)}>Cancel Request</button>
                     </div>
                 </div>
             ))}
