@@ -1,0 +1,92 @@
+.topBar{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(20,0,88);
+    padding:20px 0px;
+}
+.leftSide{
+    margin-left: 150px;
+}
+.rightSide{
+    margin-right: 150px;
+    display: flex;
+    gap:50px;
+}
+.carousel{
+    width:70%;
+    margin:auto;
+}
+.carousel .carousel-item {
+    height: 500px;
+}
+
+.carousel-item img {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    min-height: 500px;
+}
+.bookStay{
+    text-shadow: 3px 3px black;
+}
+.statusBar{
+    display:flex;
+    justify-content: center;
+    gap:200px;
+}
+.goBack{
+    text-align: center;
+    margin-left: 150px;
+    margin-top:10px;
+}
+.homeImage{
+    margin:0px 20px;
+}
+.homeImageDiv{
+    display:flex;
+    justify-content: center;
+    margin:50px 0px;
+
+}
+.botBar{
+    text-align: center;
+    background-color: rgb(20,0,88);
+    padding:10px 0px;
+}
+.missionStatementText{
+    margin:20px 500px;
+    color:white;
+}
+.stayHome{
+    color:white;
+    font-size: 32pt;
+}
+.missionStatement{
+    background-color: rgb(20, 0, 88);
+    padding:20px 0px;
+}
+.midBar{
+    margin:50px 0px;
+}
+.secondFromBottom{
+    padding:100px 0px;
+}
+.firstFromBottom{
+    padding:100px 0px;
+    background-color: rgb(20,0,88);
+}
+.botBarText{
+    color:white;
+}
+.goBack{
+    margin-right: 165px;
+    margin-bottom: 10px;
+}
+.maps{
+    display: flex;
+    align-items: center;
+    gap:30px;
+    margin-bottom: 20px;
+}
