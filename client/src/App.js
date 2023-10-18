@@ -6,7 +6,6 @@ import OwnerHome from './views/OwnerHome';
 import RenterHome from './views/RenterHome';
 import Listing from './views/Listing';
 import NewListing from './views/NewListing';
-import Message from './views/Message';
 import './App.css';
 import {Routes,Route,Link,Navigate} from 'react-router-dom'
 function App() {
@@ -20,7 +19,6 @@ function App() {
         <Route path="/renter/:id" element = {<RenterHome/>}/>
         <Route path="/listing/:renterid/:listingid" element={<Listing/>}/>
         <Route path="/newlisting/:ownerid" element = {<NewListing/>}/>
-        <Route path="/message/:ownerOrRenter/:id" element = {<Message/>}/>
       </Routes>
     </div>
   );

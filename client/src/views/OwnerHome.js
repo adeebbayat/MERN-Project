@@ -102,7 +102,6 @@ const OwnerHome = (props) => {
                     <Link to ={"/"} className="stayHome">StayHome</Link>
                 </div>
                 <div className="rightSide">
-                <Link to={"/message/" + owner +"/" + id} class="btn btn-primary">Messages</Link>
                 {notLoaded && <Link to={"/newlisting/"+owner._id} class = "btn btn-primary">Create a Listing</Link>}
                 <Link to="/" class="btn btn-primary">Logout</Link>
                 </div>
