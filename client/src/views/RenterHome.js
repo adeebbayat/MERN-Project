@@ -74,7 +74,7 @@ const RenterHome = (props) => {
                     <Link to ={"/"} className="stayHome">StayHome</Link>
                 </div>
                 <div className="rightSide">
-                <button class="btn btn-primary">Messages</button>
+                <Link to={"/message/" + id} class="btn btn-primary">Messages</Link>
                 <Link to="/" class="btn btn-primary">Logout</Link>
                 </div>
             </div>

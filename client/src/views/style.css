@@ -49,7 +49,7 @@
     display:flex;
     justify-content: center;
     margin:50px 0px;
-
+    flex-wrap: wrap;
 }
 .botBar{
     text-align: center;
@@ -127,4 +127,12 @@
 }
 .ownerListingInfoText{
     text-align: left;
+}
+.hello{
+    margin-bottom: 30px;
+}
+.newListing{
+    display: flex;
+    justify-content: center;
+    gap:40px;
 }
