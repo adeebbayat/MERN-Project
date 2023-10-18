@@ -12,8 +12,11 @@ const OwnerHome = (props) => {
     const [request,setRequest] = useState([]);
     const [filteredRenter,setFilteredRenter] = useState([]);
     const [filteredRenterLoaded,setFilteredRenterLoaded] = useState(false);
+    const [active,setActive] = useState(true);
     const {id} = useParams();
     const navigate = useNavigate();
+    
+
     useEffect(() => {
         axios.get('http://localhost:8000/api/owners/' + id)
         .then(res => {
@@ -94,6 +97,17 @@ const OwnerHome = (props) => {
         .catch(err=>console.log(err))
     }
 
+    const deleteListing = () => {
+        axios.delete('http://localhost:8000/api/listings/' + filteredListing[0]._id)
+        .then(res => {
+            console.log(res)
+            setActive(false)
+            navigate("/owner/"+id)
+        })
+        .catch(err => console.log(err))
+    }
+
+
     
     return(
         <div>
@@ -103,12 +117,13 @@ const OwnerHome = (props) => {
                 </div>
                 <div className="rightSide">
                 {notLoaded && <Link to={"/newlisting/"+owner._id} class = "btn btn-primary">Create a Listing</Link>}
+                {!notLoaded && <button class = "btn btn-danger" onClick = {() => deleteListing()}>Delete Listing</button>}
                 <Link to="/" class="btn btn-primary">Logout</Link>
                 </div>
             </div>
             <h1 className="hello">Hello {owner.username}</h1>
             <div className="ownerListingInfo">
-                    {filteredListing.length > 0  ? (
+                    {filteredListing.length > 0 && active  ? (
                     <div>
                         <img src={loaded && `${filteredListing[0].photo_url}`} width={450}/>
                         <div className="ownerListingInfoText">

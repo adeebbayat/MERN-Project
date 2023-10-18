@@ -51,7 +51,7 @@ const Main = (props) => {
                     <p>With StayHome, you're not just finding a place to stay; you're finding a place to belong. Join us in our journey to make the world feel a little bit smaller, and a lot more connected. Together, we can create a global family, one stay at a time.</p>
                 </div>
             </div>
-            <div className="secondFromBottom">
+            {/* <div className="secondFromBottom">
                 <h2>Fill in Content Here</h2>
                 <div>
                     <p>Fill in content here</p>
@@ -74,7 +74,7 @@ const Main = (props) => {
                     <p>Fill in content here</p>
                     <p>Fill in content here</p>
                 </div>
-            </div>
+            </div> */}
             <div className="botBar">
                 <h1 className="botBarText">I am Bottom Bar</h1>
             </div>
