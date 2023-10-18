@@ -4,6 +4,7 @@
     justify-content: space-between;
     background-color: rgb(20,0,88);
     padding:20px 0px;
+    margin-bottom: 30px;
 }
 .leftSide{
     margin-left: 150px;
@@ -97,8 +98,33 @@
     justify-content: center;
 }
 .approveOrDeny{
-    margin-bottom:11px;
+    margin-bottom:20px;
+    display: flex;
+    gap:20px;
 }
 .approve{
     margin-right: 10px;
+}
+
+.requestSpace{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.listingInfo{
+    display:flex;
+    justify-content: center;
+    gap:30px;
+    margin-bottom: 100px;
+}
+.listingText{
+    text-align: left;
+}
+.ownerListingInfo{
+    display: flex;
+    justify-content: center;
+    margin-bottom:130px;
+    gap:30px;
+}
+.ownerListingInfoText{
+    text-align: left;
 }

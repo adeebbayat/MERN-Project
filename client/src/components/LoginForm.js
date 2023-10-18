@@ -59,7 +59,7 @@ export default () => {
                 {errors.map((err, index) => <p style = {{color:'red'}}key={index}>{err}</p>)}
                     <div>
                             <p>
-                                <label>Username:</label><br/>
+                                <label >Username:</label><br/>
                                 <input className="text" type="text" onChange={(e)=>setUsername(e.target.value)} value={username}/>
                             </p>
                             <p>
@@ -76,7 +76,7 @@ export default () => {
                             </p>
                         
                     </div>
-                    <input className = "submit" type="submit" value="Login"/>
+                    <input className = "submit" class="btn btn-primary" type="submit" value="Login"/>
                 </div>
             </form>
         </div>

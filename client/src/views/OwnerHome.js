@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {Link, useParams} from 'react-router-dom'
+import {Link, useParams,useNavigate} from 'react-router-dom'
 import axios from 'axios';
+
 
 const OwnerHome = (props) => {
     const [owner, setOwner] = useState("");
@@ -11,7 +12,7 @@ const OwnerHome = (props) => {
     const [filteredRenter,setFilteredRenter] = useState([]);
     const [filteredRenterLoaded,setFilteredRenterLoaded] = useState(false);
     const {id} = useParams();
-
+    const navigate = useNavigate();
     useEffect(() => {
         axios.get('http://localhost:8000/api/owners/' + id)
         .then(res => {
@@ -63,53 +64,76 @@ const OwnerHome = (props) => {
         }
         setFilteredRenter(filteredRentersArray)
         setFilteredRenterLoaded(true)
-    },[id,listing,request,renter])
+    },[id,listing,request,renter,filteredRenterLoaded])
 
+    const updateRequest = (id,request_status) =>{
+        axios.patch('http://localhost:8000/api/requests/' + id, {
+            request_status
+        })
+        .then(res => {
+            const requestIndex = request.findIndex((request) => request._id === id)
+            const updatedRequest = [...request]
+            updatedRequest[requestIndex].request_status = request_status
+            setRequest(updatedRequest)
+            
+        })
+        .catch(err=>console.log(err))
+    }
 
-
+    
     return(
         <div>
             <div className='topBar'>
-                <a href="/">
-                    <h1 className="stayHome">StayHome</h1>
-                </a>
+                <div className="leftSide">
+                    <Link to ={"/"} className="stayHome">StayHome</Link>
+                </div>
+                <div className="rightSide">
                 <Link to="/">Logout</Link>
+                </div>
             </div>
             <h1>Hello {owner.username}</h1>
-            <h1>Your Listing:</h1>
-            <h1>Address: {loaded && filteredListing[0].address}</h1>
-            <img src={loaded && `${filteredListing[0].photo_url}`} width={800}/>
-            <h1>Description: {loaded && filteredListing[0].description}</h1>
-            <h1>Your Requests:</h1>
+            <div className="ownerListingInfo">
+                <img src={loaded && `${filteredListing[0].photo_url}`} width={450}/>
+                <div className="ownerListingInfoText">
+                    <h2>Your Listing:</h2>
+                    <h3>{loaded && filteredListing[0].address}</h3>
+                    <h3>{loaded && filteredListing[0].description}</h3>
+                    <p>------------------------------------</p>
+                    <h2>Your Requests:</h2>
+                    <div className="ownerRequestContainer">
+                        <div className="filteredRenterName">
+                                <h5>From:</h5>
+                            {filteredRenterLoaded && filteredRenter.map((renter,i)=>
+                            renter.length > 0 ?(
+                            <div className="requestSpace">
+                                <p>{filteredRenterLoaded && renter[0].username}</p>
+                            </div>
+                            )
+                                :(
+                                    <p>Loading...</p>
+                                )
+                            )}
+                        </div>
 
-            <div className="ownerRequestContainer">
-                <div className="filteredRenterName">
-                    {filteredRenterLoaded && filteredRenter.map((renter,i)=>
-                    renter.length > 0 ?(
-                        <p>{filteredRenterLoaded && renter[0].username}</p>
-                    )
-                        :(
-                            <p>Loading...</p>
-                        )
-                    )}
-                </div>
-
-                <div className="filteredRequest">
-                    {filteredRequest.map((request,i)=>
-                    <p>{request.request_status}</p>
-                    
-                    )}
-                </div>
-                <div>
-                {filteredRequest.map((request,i)=>
-                    <div className="approveOrDeny">
-                        <button className="approve">Approve</button>
-                        <button>Deny</button>
+                        <div className="filteredRequest">
+                            <h5>Status:</h5>
+                            {filteredRequest.map((request,i)=>
+                            <div className="requestSpace">
+                                <p>{filteredRenterLoaded && request.request_status}</p>
+                            </div>
+                            )}
+                        </div>
+                        <div>
+                            <h5>Approve or Deny:</h5>
+                        {filteredRequest.map((request,i)=>
+                            <div className="approveOrDeny">
+                                <button onClick = {() => updateRequest(request._id,"approved")} class="btn btn-success">Approve</button>
+                                <button onClick = {() => updateRequest(request._id,"denied")} class="btn btn-danger">Deny</button>
+                            </div>
+                        )}
+                        </div>
                     </div>
-                )}
                 </div>
-                
-
             </div>
             <div className="botBar">
                 <h1>I am Bottom Bar</h1>

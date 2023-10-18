@@ -36,7 +36,7 @@ const Main = (props) => {
                     {listing.map((listing,i)=>
                         <div>
                             <Link to="/login">
-                                <img className="homeImage" src={loaded && `${listing.photo_url}`} width={500}/>
+                                <img className="homeImage" src={loaded && `${listing.photo_url}`} width={450}/>
                             </Link>
                             <h3>{listing.address}</h3>
                         </div>

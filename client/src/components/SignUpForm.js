@@ -85,7 +85,7 @@ export default () => {
                             </p>
                         
                     </div>
-                    <input className = "submit" type="submit" value="Create Profile"/>
+                    <input className = "submit" type="submit" class="btn btn-primary" value="Create Profile"/>
                     {errors.map((err, index) => <p style = {{color:'red'}}key={index}>{err}</p>)}
                 </div>
             </form>

@@ -61,6 +61,7 @@ const RenterHome = (props) => {
         .catch((err) => console.log(err))
         console.log(filteredRequest[i]._id)
         setFilteredPhotosURLFinal(filteredPhotosURLFinal.splice(i,1))
+        alert("Booking request has been canceled!")
 
     }
 
@@ -73,7 +74,8 @@ const RenterHome = (props) => {
                     <Link to ={"/"} className="stayHome">StayHome</Link>
                 </div>
                 <div className="rightSide">
-                <Link to="/">Logout</Link>
+                <button class="btn btn-primary">Messages</button>
+                <Link to="/" class="btn btn-primary">Logout</Link>
                 </div>
             </div>
             <h1>Hello, {renter.username}</h1>
@@ -82,7 +84,7 @@ const RenterHome = (props) => {
                 {loaded && listing.map((listing,i)=>
                     <div>
                         <Link key = {i}to={`/listing/${renter._id}/${listing._id}`}>
-                            <img key = {i}className="homeImage" src={loaded && `${listing.photo_url}`} width={500}/>
+                            <img key = {i}className="homeImage" src={loaded && `${listing.photo_url}`} width={450}/>
                         </Link>
                         <h3>{listing.address}</h3>
                     </div>
@@ -103,7 +105,7 @@ const RenterHome = (props) => {
                         <h4>Status: {filteredRequest.request_status}</h4>
                     </div>
                     <div className="cancelButton">
-                        <button onClick = {() => removeRequest(i)}>Cancel Request</button>
+                        <button onClick = {() => removeRequest(i)} class="btn btn-danger">Cancel Request</button>
                     </div>
                 </div>
             ))}

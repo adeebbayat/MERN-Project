@@ -11,7 +11,8 @@ const Listing = (props) => {
     const [renter, setRenter] = useState("");
     const [listing,setListing] = useState("");
     const [loaded, setLoaded] = useState(false);
-
+    const [request,setRequest] = useState([]);
+    const [alreadyBooked,setAlreadyBooked] = useState(false);
     const { renterid,listingid } = useParams();
     useEffect(()=>{
         setRenter(renterid);
@@ -31,7 +32,26 @@ const Listing = (props) => {
             .catch((err) => console.log(err));
     }, []);
 
+    useEffect(()=>{
+        axios.get("http://localhost:8000/api/requests")
+        .then((res) => {
+            setRequest(res.data)
+            const repeatRequest = res.data.filter((object,i)=> 
+                object.renter === renter && object.listing === listing
+            
+            );
+            console.log(repeatRequest)
+            if(repeatRequest.length > 0){
+                setAlreadyBooked(true)
+            }
+            
+
+        })
+        .catch((err) => console.log(err))
+    },[renter])
+
     const onSubmitHandler = e => {
+    if(alreadyBooked === false){
         axios.post("http://localhost:8000/api/requests",{
             renter,
             listing,
@@ -41,10 +61,14 @@ const Listing = (props) => {
         .then(res=>{
             console.log(res)
             navigate(`/renter/${renterid}`)
+            alert("Booking Request Sent!")
         })
         .catch(err => console.log(err))
 
-    }
+    } else{
+        alert("You've already made a booking request!")
+    }}
+
 
     return (
         <div>
@@ -53,14 +77,18 @@ const Listing = (props) => {
                     <Link to ={"/"} className="stayHome">StayHome</Link>
                 </div>
                 <div className="rightSide">
-                <Link to="/">Logout</Link>
+                <Link to={`/renter/${renter}`} class = "btn btn-primary">Go Back</Link>
+                <Link to="/" class = "btn btn-primary">Logout</Link>
                 </div>
             </div>
             <h1>Book this listing today!</h1>
-            <img src={loaded && `${listingObj.photo_url}`} width="800"/>
-            <h3>{listingObj.address}</h3>
-            <div className="requestCheck">
-            <button type="button" class="btn btn-success" onClick={onSubmitHandler}>Request to book</button>
+            <div className="listingInfo">
+                <img src={loaded && `${listingObj.photo_url}`} width="550"/>
+                <div className="listingText">
+                    <h3>{listingObj.address}</h3>
+                    <h4>{listingObj.description}</h4>
+                    <button type="button" class="btn btn-success" onClick={onSubmitHandler}>Request to book</button>
+                </div>
             </div>
             <div className="botBar">
                 <h1 className="botBarText">I am Bottom Bar</h1>
