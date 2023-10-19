@@ -102,7 +102,7 @@ const OwnerHome = (props) => {
         .then(res => {
             console.log(res)
             setActive(false)
-            navigate("/owner/"+id)
+            setNotLoaded(true)
         })
         .catch(err => console.log(err))
     }
