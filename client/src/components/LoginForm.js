@@ -70,7 +70,7 @@ export default () => {
 
 
     return (
-        <div className="form">
+        <div className="loginForm">
             <form onSubmit={onSubmitHandler}>
                 <div>
                 

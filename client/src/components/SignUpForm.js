@@ -59,7 +59,7 @@ export default () => {
 
     //onChange to update firstName and lastName
     return (
-        <div className="form">
+        <div className="signUpForm">
             <form onSubmit={onSubmitHandler}>
                 <div>
                     <div>

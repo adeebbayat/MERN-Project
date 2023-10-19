@@ -51,11 +51,7 @@
     margin:50px 0px;
     flex-wrap: wrap;
 }
-.botBar{
-    text-align: center;
-    background-color: rgb(20,0,88);
-    padding:10px 0px;
-}
+
 .missionStatementText{
     margin:20px 500px;
     color:white;
@@ -135,4 +131,26 @@
     display: flex;
     justify-content: center;
     gap:40px;
+    margin-bottom: 200px;
+}
+.botBar{
+    display: flex;
+    color:white;
+    justify-content: center;
+    gap:50px;
+    background-color: rgb(20,0,88);
+    padding:10px 0px;
+    align-items: center;
+}
+.signUpForm{
+    margin-bottom: 200px;
+}
+.loginForm{
+    margin-bottom: 250px;
+}
+.noListingFound{
+    margin-bottom: 320px;
+}
+.little{
+    margin-bottom: 20px;
 }
