@@ -52,6 +52,7 @@ const RenterHome = (props) => {
             })
             .catch((err) => console.log(err));
         }, [renter,filteredPhotosURLFinal,id]);
+    
         
     
 
@@ -65,7 +66,8 @@ const RenterHome = (props) => {
 
     }
 
-        
+
+                
         
     return (
         <div>
@@ -98,7 +100,8 @@ const RenterHome = (props) => {
             {filteredRequest.map((filteredRequest, i) => (
                 <div key={i} className="requestItem">
                     <div className="imageContainer">
-                        <img src={filterLoaded && `${filteredPhotosURLFinal[i]}`} width={200} alt={`i`} />
+                    <img src={filterLoaded ? filteredPhotosURLFinal[i] : ''} width={200} alt={`i`} />
+
                     </div>
                     <div className="status">
                         <h4>Status: {filteredRequest.request_status}</h4>
