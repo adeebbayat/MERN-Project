@@ -8,7 +8,8 @@ export default () => {
     const[renters,setRenters] = useState([]);
     const[owners,setOwners] = useState([]);
     const[renterOrOwner,setRenterOrOwner] = useState("Renter")
-    const [errors, setErrors] = useState([]); 
+    const [errors, setErrors] = useState(""); 
+    const [errorsLoaded, setErrorsLoaded] = useState(false)
     const navigate = useNavigate();
 
     const onSubmitHandler = e =>{
@@ -19,6 +20,14 @@ export default () => {
                     if(renters[i].password === password){
                         navigate(`/renter/${renters[i]._id}`)
                     }
+                    else{
+                        setErrors("Username/Password Incorrect")
+                        setErrorsLoaded(true)
+                    }
+                }
+                else{
+                    setErrors("Username/Password Incorrect")
+                    setErrorsLoaded(true)
                 }
             }
         }else if(renterOrOwner ==="Owner"){
@@ -27,6 +36,14 @@ export default () => {
                     if(owners[i].password === password){
                         navigate(`/owner/${owners[i]._id}`)
                     }
+                    else{
+                        setErrors("Username/Password Incorrect")
+                        setErrorsLoaded(true)
+                    }
+                }
+                else{
+                    setErrors("Username/Password Incorrect")
+                    setErrorsLoaded(true)
                 }
             }
         }
@@ -56,7 +73,7 @@ export default () => {
         <div className="form">
             <form onSubmit={onSubmitHandler}>
                 <div>
-                {errors.map((err, index) => <p style = {{color:'red'}}key={index}>{err}</p>)}
+                
                     <div>
                             <p>
                                 <label >Username:</label><br/>
@@ -79,6 +96,7 @@ export default () => {
                     <input className = "submit" class="btn btn-primary" type="submit" value="Login"/>
                 </div>
             </form>
+            <p style = {{color:"red"}}>{errorsLoaded && errors}</p>
         </div>
 
 
