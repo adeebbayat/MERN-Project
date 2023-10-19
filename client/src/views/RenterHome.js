@@ -48,7 +48,7 @@ const RenterHome = (props) => {
                 setFilteredRequest(filtered)
                 setFilteredPhotosURLFinal(filteredPhotoURL)
                 setFilterLoaded(true)
-                
+                console.log(test)
             })
             .catch((err) => console.log(err));
         }, [renter,filteredPhotosURLFinal,id]);
