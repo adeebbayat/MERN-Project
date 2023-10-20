@@ -12,6 +12,7 @@ const RenterHome = (props) => {
     const [filteredRequest,setFilteredRequest] = useState([]);
     const [filteredPhotosURLFinal,setFilteredPhotosURLFinal] = useState([])
     const [filterLoaded,setFilterLoaded] = useState(false);
+
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -53,8 +54,7 @@ const RenterHome = (props) => {
             .catch((err) => console.log(err));
         }, [renter,filteredPhotosURLFinal,id]);
     
-        
-    
+
 
     const removeRequest = (i) =>{
         axios.delete(`http://localhost:8000/api/requests/${filteredRequest[i]._id}`)
