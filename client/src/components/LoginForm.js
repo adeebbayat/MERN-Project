@@ -81,7 +81,7 @@ export default () => {
                             </p>
                             <p>
                                 <label>Password:</label><br/>
-                                <input className="text" type="text" onChange={(e)=>setPassword(e.target.value)} value={password}/>
+                                <input className="text" type="password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
                             </p>
                             <p>
                                 <label>Renter or Owner?</label><br/>
